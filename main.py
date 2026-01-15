@@ -86,5 +86,6 @@ def delete_all_movies():
     with sqlite3.connect('movies.db') as db:
         cursor = db.cursor()
         cursor.execute("DELETE FROM movies")
+        moviesDeleted = cursor.rowcount
         db.commit()
-        return {"message": "All movies deleted successfully"}
+        return {"message": str(moviesDeleted) + " movies deleted successfully"}
